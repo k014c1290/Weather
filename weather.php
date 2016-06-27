@@ -5,9 +5,9 @@
 <meta charset="utf-8">
 </head>
 <body>
-<a href="http://weather.livedoor.com/forecast/rss/primary_area.xml">地域とIDの定義表</a>
+<p><a href="http://weather.livedoor.com/forecast/rss/primary_area.xml">地域とIDの定義表</a></p>
 <form method="GET" action="./weather.php">
-<input type="text" name="cityCode">
+<input type="text" name="cityCode" required>
 <input type="submit" value="検索" style="display:inline">
 </form>
 <hr>
@@ -21,8 +21,7 @@ if(isset($_GET["cityCode"])){
 	$proxy_context = stream_context_create($proxy);
     $response = file_get_contents(
 	    $url . '?' . http_build_query($query),
-        false,
-		$proxy_context);
+        false);
 
     $result = json_decode($response, true);
 
